@@ -7,6 +7,7 @@
 #
 
 from argparse import ArgumentParser
+from itertools import batched
 from json import dumps
 from json import loads
 from os import scandir
@@ -264,6 +265,7 @@ countries_fixtures = []
 level1area_fixtures = []
 level2area_fixtures = []
 last_settlement_id = -1
+settlement_count = 0
 
 for country_code, cldr_data in sorted(COUNTRY_CLDR_DATA.items()):
     user_data = COUNTRY_USER_DATA[country_code]
@@ -369,9 +371,17 @@ for country_code, cldr_data in sorted(COUNTRY_CLDR_DATA.items()):
                                     )
                                 )
 
-    with open(join(FIXTURE_BASE_PATH, f"settlements/{country_code}.json"), "w") as f:
-        print(f"Writing {f.name} fixture")
-        f.write(dumps(settlement_fixtures, ensure_ascii=False, indent=4))
+    settlement_fixtures = sorted(settlement_fixtures, key=lambda s:s["fields"]["id"])
+    settlement_count += len(settlement_fixtures)
+
+    print(f"{len(settlement_fixtures)} settlements in {country_code}.")
+
+    for index, fixtures in enumerate(batched(settlement_fixtures, 50000)):
+        with open(join(FIXTURE_BASE_PATH, f"settlements/{country_code}-{index:03d}.json"), "w") as f:
+            print(f"Writing {f.name} fixture, {len(fixtures)} settlements")
+            f.write(dumps(fixtures, ensure_ascii=False, indent=4))
+
+print(f"{settlement_count} settlements total.")
 
 with open(join(FIXTURE_BASE_PATH, f"countries.json"), "w") as f:
     print(f"Writing {f.name} fixture")

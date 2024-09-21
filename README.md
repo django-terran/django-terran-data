@@ -4,7 +4,7 @@ This repository contains Python scripts and JSON data files used to generate fix
 
 - Currencies;
 - Countries;
-- Administrative Divisions of Countries;
+- Administrative divisions of countries;
 - Settlements;
 - and relationships between them all.
 
@@ -34,6 +34,10 @@ In praticular answers to the following questions are provided:
     - What the calling code a country X?
         - What do phone numbers look line in a country X?
     - Does the country support IBAN?
+
+## What is Django Terran?
+
+See https://github.com/django-terran/django-terran
 
 ## Examples
 
@@ -375,7 +379,7 @@ There are a few types of issues:
     ```
 
     I'm pretty sure in many cases it can be autofixed by overlapping administrative division area and settlement point.
-    I'm not a OSM guru to do that myself in a reasonable way. I do not feel comfortable issuing one request per settlement to OSM servers.
+    I'm not an OSM guru to do that myself in a reasonable way. I do not feel comfortable issuing one request per settlement to OSM servers.
 
 ## Rebuilding Fixtures
 
@@ -402,7 +406,7 @@ Ensure your machine meets the following minimum hardware requirements:
 The scripts cache of downloaded files is under `~/.cache/django-terran/`.
 Keeping this cache around is important for execution speed.
 Please avoid deleting the cache unless absolutely necessary, as it will cause an unreasonable load on OpenStreetMap servers.
-The first time the scripts run, it may take **several hours** depending on your CPU and Internet connection speed.
+The first time the scripts run, it may take several **hours** depending on your CPU and Internet connection speed.
 
 Run the scripts to generate the fixtures:
 
