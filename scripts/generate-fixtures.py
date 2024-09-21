@@ -7,6 +7,7 @@
 #
 
 from argparse import ArgumentParser
+from collections import defaultdict
 from itertools import batched
 from json import dumps
 from json import loads
@@ -40,6 +41,9 @@ CURRENCY_CLDR_DATA = {}
 COUNTRY_CLDR_DATA = {}
 COUNTRY_OSM_DATA = {}
 COUNTRY_USER_DATA = {}
+
+GLOBAL_COUNTERS = defaultdict(int)
+COUNTRY_COUNTERS = defaultdict(lambda : defaultdict(int))
 
 print(f"Reading currency CLDR data")
 
@@ -126,6 +130,7 @@ for currency_code, cldr_data in sorted(CURRENCY_CLDR_DATA.items()):
             },
         }
     )
+    GLOBAL_COUNTERS["currencies"] += 1
     currencies_fixtures.extend(currency_fixtures)
 
 fixtures = sorted(currencies_fixtures, key=lambda f: f["fields"]["iso_4217_n3"])
@@ -265,7 +270,6 @@ countries_fixtures = []
 level1area_fixtures = []
 level2area_fixtures = []
 last_settlement_id = -1
-settlement_count = 0
 
 for country_code, cldr_data in sorted(COUNTRY_CLDR_DATA.items()):
     user_data = COUNTRY_USER_DATA[country_code]
@@ -274,9 +278,11 @@ for country_code, cldr_data in sorted(COUNTRY_CLDR_DATA.items()):
     settlement_fixtures = []
 
     countries_fixtures.append(get_country_fixture(cldr_data, user_data))
+    GLOBAL_COUNTERS["countries"] += 1
 
     for currency_cldr_data in sorted(cldr_data["currencies"], key=lambda c: c["since"]):
         countries_fixtures.append(get_currency_fixture(country_id, currency_cldr_data))
+        COUNTRY_COUNTERS[country_code]["currencies"] += 1
 
     for settlement_osm_data in osm_data["settlements"]:
         names = {k: v.strip(FOOTNOTE_DIGITS) for k, v in settlement_osm_data["names"].items()}
@@ -288,6 +294,8 @@ for country_code, cldr_data in sorted(COUNTRY_CLDR_DATA.items()):
             last_settlement_id -= 1
 
         settlement_fixtures.append(get_settlement_fixture(country_id, None, None, settlement_osm_data))
+        COUNTRY_COUNTERS[country_code]["settlements"] += 1
+        GLOBAL_COUNTERS["settlements"] += 1
 
     for level1area_cldr_data in sorted(cldr_data["level1areas"], key=lambda a: a["iso_3166_a2"]):
         if level1area_cldr_data["names"].get("en"):
@@ -302,6 +310,8 @@ for country_code, cldr_data in sorted(COUNTRY_CLDR_DATA.items()):
                 print(f"WARNING: No OSM data for {level1area_cldr_data["iso_3166_a2"]}, {level1area_cldr_data["names"]["en"]}, {cldr_data["names"]["en"]}")
             else:
                 level1area_fixtures.append(get_level1area_fixture(country_id, level1area_cldr_data, level1area_osm_data))
+                COUNTRY_COUNTERS[country_code]["level1areas"] += 1
+                GLOBAL_COUNTERS["level1areas"] += 1
 
     for level1area_cldr_data in sorted(cldr_data["level1areas"], key=lambda a: a["iso_3166_a2"]):
         if level1area_cldr_data["names"].get("en"):
@@ -334,6 +344,8 @@ for country_code, cldr_data in sorted(COUNTRY_CLDR_DATA.items()):
                             level2area_fixtures.append(
                                 get_level2area_fixture(country_id, level1area_cldr_data["iso_3166_a2"], level2area_cldr_data, level2area_osm_data)
                             )
+                            COUNTRY_COUNTERS[country_code]["level2areas"] += 1
+                            GLOBAL_COUNTERS["level2areas"] += 1
 
     for level1area_cldr_data in sorted(cldr_data["level1areas"], key=lambda a: a["iso_3166_a2"]):
         if level1area_cldr_data["names"].get("en"):
@@ -349,6 +361,8 @@ for country_code, cldr_data in sorted(COUNTRY_CLDR_DATA.items()):
             else:
                 for settlement_osm_data in level1area_osm_data["settlements"]:
                     settlement_fixtures.append(get_settlement_fixture(country_id, level1area_cldr_data["iso_3166_a2"], None, settlement_osm_data))
+                    COUNTRY_COUNTERS[country_code]["settlements"] += 1
+                    GLOBAL_COUNTERS["settlements"] += 1
 
                 for level2area_cldr_data in sorted(level1area_cldr_data["level2areas"], key=lambda a: a["iso_3166_a2"]):
                     if level2area_cldr_data["names"].get("en"):
@@ -370,18 +384,15 @@ for country_code, cldr_data in sorted(COUNTRY_CLDR_DATA.items()):
                                         country_id, level1area_cldr_data["iso_3166_a2"], level2area_cldr_data["iso_3166_a2"], settlement_osm_data
                                     )
                                 )
+                                COUNTRY_COUNTERS[country_code]["settlements"] += 1
+                                GLOBAL_COUNTERS["settlements"] += 1
 
     settlement_fixtures = sorted(settlement_fixtures, key=lambda s:s["fields"]["id"])
-    settlement_count += len(settlement_fixtures)
-
-    print(f"{len(settlement_fixtures)} settlements in {country_code}.")
 
     for index, fixtures in enumerate(batched(settlement_fixtures, 50000)):
         with open(join(FIXTURE_BASE_PATH, f"settlements/{country_code}-{index:03d}.json"), "w") as f:
             print(f"Writing {f.name} fixture, {len(fixtures)} settlements")
             f.write(dumps(fixtures, ensure_ascii=False, indent=4))
-
-print(f"{settlement_count} settlements total.")
 
 with open(join(FIXTURE_BASE_PATH, f"countries.json"), "w") as f:
     print(f"Writing {f.name} fixture")
@@ -394,3 +405,29 @@ with open(join(FIXTURE_BASE_PATH, f"level1areas.json"), "w") as f:
 with open(join(FIXTURE_BASE_PATH, f"level2areas.json"), "w") as f:
     print(f"Writing {f.name} fixture")
     f.write(dumps(level2area_fixtures, ensure_ascii=False, indent=4))
+
+print()
+print()
+print("| Country | Currencies | Level 1<br/>Administrative<br/>Divisions | Level 2<br/>Administrative<br/>Divisions | Settlements |")
+print("| :-- | --: | --: | --: | --: | ")
+
+for country_code, cldr_data in sorted(COUNTRY_CLDR_DATA.items()):
+    name = cldr_data['names']['en']
+    c = COUNTRY_COUNTERS[country_code]["currencies"]
+    l1a = COUNTRY_COUNTERS[country_code]["level1areas"]
+    l2a = COUNTRY_COUNTERS[country_code]["level2areas"]
+    s = COUNTRY_COUNTERS[country_code]["settlements"]
+    c = c if c > 0 else "-"
+    l1a = l1a if l1a > 0 else "-"
+    l2a = l2a if l2a > 0 else "-"
+    s = s if s > 0 else "-"
+
+    print(f"| {country_code}, {name} | {c} | {l1a} | {l2a} | {s} | ")
+
+c = GLOBAL_COUNTERS["currencies"]
+l1a = GLOBAL_COUNTERS["level1areas"]
+l2a = GLOBAL_COUNTERS["level2areas"]
+s = GLOBAL_COUNTERS["settlements"]
+print(f"| Total | {c} | {l1a} | {l2a} | {s} | ")
+print()
+print()
