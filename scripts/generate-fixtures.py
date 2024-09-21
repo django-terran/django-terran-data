@@ -308,10 +308,10 @@ for country_code, cldr_data in sorted(COUNTRY_CLDR_DATA.items()):
 
             if not level1area_osm_data:
                 print(f"WARNING: No OSM data for {level1area_cldr_data["iso_3166_a2"]}, {level1area_cldr_data["names"]["en"]}, {cldr_data["names"]["en"]}")
-            else:
-                level1area_fixtures.append(get_level1area_fixture(country_id, level1area_cldr_data, level1area_osm_data))
-                COUNTRY_COUNTERS[country_code]["level1areas"] += 1
-                GLOBAL_COUNTERS["level1areas"] += 1
+
+            level1area_fixtures.append(get_level1area_fixture(country_id, level1area_cldr_data, level1area_osm_data))
+            COUNTRY_COUNTERS[country_code]["level1areas"] += 1
+            GLOBAL_COUNTERS["level1areas"] += 1
 
     for level1area_cldr_data in sorted(cldr_data["level1areas"], key=lambda a: a["iso_3166_a2"]):
         if level1area_cldr_data["names"].get("en"):
@@ -322,30 +322,27 @@ for country_code, cldr_data in sorted(COUNTRY_CLDR_DATA.items()):
                     level1area_osm_data = data
                     break
 
-            if not level1area_osm_data:
-                print(f"WARNING: No OSM data for {level1area_cldr_data["iso_3166_a2"]}, {level1area_cldr_data["names"]["en"]}, {cldr_data["names"]["en"]}")
-            else:
-                for level2area_cldr_data in sorted(level1area_cldr_data["level2areas"], key=lambda a: a["iso_3166_a2"]):
-                    if level2area_cldr_data["names"].get("en"):
-                        level2area_osm_data = None
+            for level2area_cldr_data in sorted(level1area_cldr_data["level2areas"], key=lambda a: a["iso_3166_a2"]):
+                if level2area_cldr_data["names"].get("en"):
+                    level2area_osm_data = None
 
+                    if level1area_osm_data:
                         for data in level1area_osm_data["level2areas"]:
                             if data["__RELATION_A2__"] == level2area_cldr_data["iso_3166_a2"]:
                                 level2area_osm_data = data
                                 break
 
-                        if not level2area_osm_data:
-                            print(
-                                f"WARNING: No OSM data for {level2area_cldr_data["iso_3166_a2"]}, {level1area_cldr_data["names"]["en"]}, {level2area_cldr_data["names"]["en"]}, {cldr_data["names"]["en"]}"
-                            )
-                        else:
-                            names = {k: v.strip(FOOTNOTE_DIGITS) for k, v in level2area_cldr_data["names"].items()}
-                            names = {k: v for k, v in sorted([(k, v) for k, v in names.items()], key=lambda n: n[0])}
-                            level2area_fixtures.append(
-                                get_level2area_fixture(country_id, level1area_cldr_data["iso_3166_a2"], level2area_cldr_data, level2area_osm_data)
-                            )
-                            COUNTRY_COUNTERS[country_code]["level2areas"] += 1
-                            GLOBAL_COUNTERS["level2areas"] += 1
+                    if not level2area_osm_data:
+                        print(
+                            f"WARNING: No OSM data for {level2area_cldr_data["iso_3166_a2"]}, {level1area_cldr_data["names"]["en"]}, {level2area_cldr_data["names"]["en"]}, {cldr_data["names"]["en"]}"
+                        )
+                    names = {k: v.strip(FOOTNOTE_DIGITS) for k, v in level2area_cldr_data["names"].items()}
+                    names = {k: v for k, v in sorted([(k, v) for k, v in names.items()], key=lambda n: n[0])}
+                    level2area_fixtures.append(
+                        get_level2area_fixture(country_id, level1area_cldr_data["iso_3166_a2"], level2area_cldr_data, level2area_osm_data)
+                    )
+                    COUNTRY_COUNTERS[country_code]["level2areas"] += 1
+                    GLOBAL_COUNTERS["level2areas"] += 1
 
     for level1area_cldr_data in sorted(cldr_data["level1areas"], key=lambda a: a["iso_3166_a2"]):
         if level1area_cldr_data["names"].get("en"):
@@ -356,9 +353,7 @@ for country_code, cldr_data in sorted(COUNTRY_CLDR_DATA.items()):
                     level1area_osm_data = data
                     break
 
-            if not level1area_osm_data:
-                print(f"WARNING: No OSM data for {level1area_cldr_data["iso_3166_a2"]}, {level1area_cldr_data["names"]["en"]}, {cldr_data["names"]["en"]}")
-            else:
+            if level1area_osm_data:
                 for settlement_osm_data in level1area_osm_data["settlements"]:
                     settlement_fixtures.append(get_settlement_fixture(country_id, level1area_cldr_data["iso_3166_a2"], None, settlement_osm_data))
                     COUNTRY_COUNTERS[country_code]["settlements"] += 1
@@ -373,11 +368,7 @@ for country_code, cldr_data in sorted(COUNTRY_CLDR_DATA.items()):
                                 level2area_osm_data = data
                                 break
 
-                        if not level2area_osm_data:
-                            print(
-                                f"WARNING: No OSM data for {level2area_cldr_data["iso_3166_a2"]}, {level1area_cldr_data["names"]["en"]}, {level2area_cldr_data["names"]["en"]}, {cldr_data["names"]["en"]}"
-                            )
-                        else:
+                        if level2area_osm_data:
                             for settlement_osm_data in level2area_osm_data["settlements"]:
                                 settlement_fixtures.append(
                                     get_settlement_fixture(
