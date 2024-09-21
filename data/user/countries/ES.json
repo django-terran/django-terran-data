@@ -1,0 +1,81 @@
+{
+    "__COUNTRY_NAME__": "Spain",
+    "__COUNTRY_A2__": "ES",
+    "__COUNTRY_A3__": "ESP",
+    "__COUNTRY_N3__": "724",
+    "__LANGUAGE_A2__": "es",
+    "__LANGUAGES_A2__": [
+        "es",
+        "ca",
+        "gl",
+        "eu",
+        "ast",
+        "oc"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "level2area",
+            "settlement",
+            "postcode",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_postcode or has_settlement %}{% if has_postcode %}{{ postcode_text }}{% if has_settlement %} {% endif %}{% endif %}{% if has_settlement %}{{ settlement_text }}{% endif %}\n{% endif %}{% if has_level1area or has_level2area %}{% if has_level1area %}{{ level1area_name }}{% if has_level2area %}, {% endif %}{% endif %}{% if has_level2area %}{{ level2area_name }}{% endif %}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Autonomous Community"
+        },
+        "level2area_names": {
+            "en": "Province"
+        },
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{5}",
+        "postcode_input_example": "12345",
+        "street_names": {
+            "en": "Road, house number"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "34"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "VAT identification number",
+            "es": "Código de Identificación Fiscal"
+        },
+        "abbreviations": {
+            "en": "VATIN",
+            "es": "CIF"
+        },
+        "input_pattern": "ES[A-Z][0-9]{7}[0-9A-Z]",
+        "input_example": "ESA12345678",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "ES[0-9]{22}",
+        "input_example": "ES1234567890123456789012",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

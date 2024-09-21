@@ -1,0 +1,73 @@
+{
+    "__COUNTRY_NAME__": "Canada",
+    "__COUNTRY_A2__": "CA",
+    "__COUNTRY_A3__": "CAN",
+    "__COUNTRY_N3__": "124",
+    "__LANGUAGE_A2__": "en",
+    "__LANGUAGES_A2__": [
+        "en",
+        "fr",
+        "iu",
+        "iu-latn",
+        "chp",
+        "cr",
+        "den",
+        "dgr",
+        "gwi"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "postcode",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_settlement or has_level1area or has_postcode %}{% if has_settlement %}{{ settlement_text }}{% if has_level1area or has_postcode %}, {% endif %}{% endif %}{% if has_level1area %}{{ level1area_name }}{% if has_postcode %} {% endif %}{% endif %}{% if has_postcode %}{{ postcode_text }}{% endif %}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Province"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[A-Z][0-9][A-Z] [0-9][A-Z][0-9]",
+        "postcode_input_example": "A1B 2C3",
+        "street_names": {
+            "en": "House number, road"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "1"
+        ],
+        "input_pattern": "1[0-9]{10}",
+        "input_example": "12345678901",
+        "output_format": {
+            "\\A1([0-9]{3})([0-9]{3})([0-9]{4})\\Z": "1 (\\2) \\3-\\4",
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "Business Number",
+            "fr": "Numéro d'entreprise"
+        },
+        "abbreviations": {
+            "en": "BN",
+            "fr": "NE"
+        },
+        "input_pattern": "[0-9A-Z]{9}",
+        "input_example": "A1B2C3D4E",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": null
+}

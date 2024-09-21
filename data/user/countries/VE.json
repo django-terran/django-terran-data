@@ -1,0 +1,64 @@
+{
+    "__COUNTRY_NAME__": "Venezuela",
+    "__COUNTRY_A2__": "VE",
+    "__COUNTRY_A3__": "VEN",
+    "__COUNTRY_N3__": "862",
+    "__LANGUAGE_A2__": "es",
+    "__LANGUAGES_A2__": [
+        "es"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "postcode",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_settlement or has_postcode or has_level1area %}{% if has_settlement %}{{ settlement_text }}{% if has_postcode or has_level1area %} {% endif %}{% endif %}{% if has_postcode %}{{ postcode_text }}{% if has_level1area %}, {% endif %}{% endif %}{% if has_level1area %}{{ level1area_name }}{% endif %}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "State"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{4}(-[A-Z])?",
+        "postcode_input_example": "1234-A",
+        "street_names": {
+            "en": "Road, house number"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "58"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "Tax Information Registry",
+            "es": "Registro de Informacion Fiscal "
+        },
+        "abbreviations": {
+            "en": "TIR",
+            "es": "RIF"
+        },
+        "input_pattern": "[EGJV][0-9]{9}",
+        "input_example": "E123456789",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": null
+}

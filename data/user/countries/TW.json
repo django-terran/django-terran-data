@@ -1,0 +1,60 @@
+{
+    "__COUNTRY_NAME__": "Taiwan",
+    "__COUNTRY_A2__": "TW",
+    "__COUNTRY_A3__": "TWN",
+    "__COUNTRY_N3__": "158",
+    "__LANGUAGE_A2__": "zh-hant",
+    "__LANGUAGES_A2__": [
+        "zh-hant"
+    ],
+    "address": {
+        "input_layout": [
+            "street_text"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": null,
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{6}",
+        "postcode_input_example": "123456",
+        "street_names": {
+            "en": "House number, road, district"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "886"
+        ],
+        "input_pattern": "886[0-9]+",
+        "input_example": "886921234567",
+        "output_format": {
+            "\\A886(9[0-9])([0-9]+).*\\Z": "886 (\\1) \\2",
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "Uniform Serial Number",
+            "zh": "統一編號"
+        },
+        "abbreviations": {
+            "en": "USN",
+            "zh": "統編"
+        },
+        "input_pattern": "[0-9]{8}",
+        "input_example": "12345678",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": null
+}

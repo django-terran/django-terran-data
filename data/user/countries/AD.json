@@ -1,0 +1,59 @@
+{
+    "__COUNTRY_NAME__": "Andorra",
+    "__COUNTRY_A2__": "AD",
+    "__COUNTRY_A3__": "AND",
+    "__COUNTRY_N3__": "020",
+    "__LANGUAGE_A2__": "ca",
+    "__LANGUAGES_A2__": [
+        "ca"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "postcode",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_postcode or has_settlement %}{% if has_postcode %}{{ postcode_text }}{% if has_settlement %} {% endif %}{% endif %}{% if has_settlement %}{{ settlement_text }}{% endif %}\n{% endif %}{% if has_level1area %}{{ level1area_name }}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Parish"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "AD[0-9]{3}",
+        "postcode_input_example": "AD123",
+        "street_names": {
+            "en": "House number, road"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "376"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": null,
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "AD[0-9]{10}[0-9A-Za-z]{12}",
+        "input_example": "AD1234567890a1b2c3d4e5f6",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

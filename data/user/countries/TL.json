@@ -1,0 +1,57 @@
+{
+    "__COUNTRY_NAME__": "Timor-Leste",
+    "__COUNTRY_A2__": "TL",
+    "__COUNTRY_A3__": "TLS",
+    "__COUNTRY_N3__": "626",
+    "__LANGUAGE_A2__": "pt",
+    "__LANGUAGES_A2__": [
+        "pt",
+        "tet"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_settlement %}{{ settlement_text }}\n{% endif %}{% if has_level1area %}{{ level1area_name }}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Municipality"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": null,
+        "postcode_input_pattern": null,
+        "postcode_input_example": null,
+        "street_names": {
+            "en": "Road, house number"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "670"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": null,
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "TL[0-9]{21}",
+        "input_example": "TL123456789012345678901",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

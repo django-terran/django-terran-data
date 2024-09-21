@@ -1,0 +1,60 @@
+{
+    "__COUNTRY_NAME__": "South Africa",
+    "__COUNTRY_A2__": "ZA",
+    "__COUNTRY_A3__": "ZAF",
+    "__COUNTRY_N3__": "710",
+    "__LANGUAGE_A2__": "en",
+    "__LANGUAGES_A2__": [
+        "en",
+        "zu",
+        "xh",
+        "af",
+        "nso",
+        "tn",
+        "st",
+        "ts",
+        "ss",
+        "ve",
+        "nr"
+    ],
+    "address": {
+        "input_layout": [
+            "postcode",
+            "level1area",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_settlement %}{{ settlement_text }}\n{% endif %}{% if has_level1area %}{{ level1area_name }}\n{% endif %}{% if has_postcode %}{{ postcode_text }}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Province"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{4}",
+        "postcode_input_example": "1234",
+        "street_names": {
+            "en": "House number, road, district"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "27"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": null,
+    "person_id": null,
+    "iban": null
+}

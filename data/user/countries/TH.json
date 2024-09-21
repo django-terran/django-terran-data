@@ -1,0 +1,50 @@
+{
+    "__COUNTRY_NAME__": "Thailand",
+    "__COUNTRY_A2__": "TH",
+    "__COUNTRY_A3__": "THA",
+    "__COUNTRY_N3__": "764",
+    "__LANGUAGE_A2__": "th",
+    "__LANGUAGES_A2__": [
+        "th"
+    ],
+    "address": {
+        "input_layout": [
+            "postcode",
+            "level1area",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_settlement %}{{ settlement_text }}\n{% endif %}{% if has_level1area or has_postcode %}{% if has_level1area %}{{ level1area_name }}{% if has_postcode %} {% endif %}{% endif %}{% if has_postcode %}{{ postcode_text }}{% endif %}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Province"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{5}",
+        "postcode_input_example": "12345",
+        "street_names": {
+            "en": "House number, road, district"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "66"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": null,
+    "person_id": null,
+    "iban": null
+}

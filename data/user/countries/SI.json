@@ -1,0 +1,74 @@
+{
+    "__COUNTRY_NAME__": "Slovenia",
+    "__COUNTRY_A2__": "SI",
+    "__COUNTRY_A3__": "SVN",
+    "__COUNTRY_N3__": "705",
+    "__LANGUAGE_A2__": "sl",
+    "__LANGUAGES_A2__": [
+        "sl",
+        "vec"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "postcode",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_postcode or has_settlement %}{% if has_postcode %}{{ postcode_text }}{% if has_settlement %} {% endif %}{% endif %}{% if has_settlement %}{{ settlement_text }}{% endif %}\n{% endif %}{% if has_level1area %}{{ level1area_name }}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Municipality"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "(SI-)?[0-9]{4}",
+        "postcode_input_example": "SI-1234",
+        "street_names": {
+            "en": "Road, house number"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "386"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "VAT identification number",
+            "sl": "Identifikacijska številka za DDV"
+        },
+        "abbreviations": {
+            "en": "VATIN",
+            "sl": "ID za DDV"
+        },
+        "input_pattern": "SI[0-9]{8}",
+        "input_example": "SI12345678",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "SI[0-9]{17}",
+        "input_example": "SI12345678901234567",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

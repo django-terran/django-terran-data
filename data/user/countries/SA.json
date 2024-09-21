@@ -1,0 +1,71 @@
+{
+    "__COUNTRY_NAME__": "Saudi Arabia",
+    "__COUNTRY_A2__": "SA",
+    "__COUNTRY_A3__": "SAU",
+    "__COUNTRY_N3__": "682",
+    "__LANGUAGE_A2__": "ar",
+    "__LANGUAGES_A2__": [
+        "ar"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "settlement",
+            "postcode",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_settlement or has_postcode %}{% if has_settlement %}{{ settlement_text }}{% if has_postcode %} {% endif %}{% endif %}{% if has_postcode %}{{ postcode_text }}{% endif %}\n{% endif %}{% if has_level1area %}{{ level1area_name }}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Region"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{5}(-[0-9]{4})?",
+        "postcode_input_example": "12345",
+        "street_names": {
+            "en": "House number, road, district"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "966"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "Tax Identification Number "
+        },
+        "abbreviations": {
+            "en": "TIN"
+        },
+        "input_pattern": "[0-9]{15}",
+        "input_example": "123456789012345",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "SA[0-9]{4}[0-9A-Za-z]{18}",
+        "input_example": "SA1234a1b2c3d4e5f6g7h8i9",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

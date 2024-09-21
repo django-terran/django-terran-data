@@ -1,0 +1,65 @@
+{
+    "__COUNTRY_NAME__": "Mexico",
+    "__COUNTRY_A2__": "MX",
+    "__COUNTRY_A3__": "MEX",
+    "__COUNTRY_N3__": "484",
+    "__LANGUAGE_A2__": "es",
+    "__LANGUAGES_A2__": [
+        "es",
+        "vec"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "settlement",
+            "postcode",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_postcode or has_settlement or has_level1area or has_level2area %}{% if has_postcode %}{{ postcode_text }}{% if has_settlement or has_level1area %} {% endif %}{% endif %}{% if has_settlement %}{{ settlement_text }}{% if has_level1area %}, {% endif %}{% endif %}{% if has_level1area %}{{ level1area_name }}{% endif %}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "State"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{5}",
+        "postcode_input_example": "12345",
+        "street_names": {
+            "en": "Road, house number, district"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "52"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "Federal Taxpayers Registry",
+            "es": "Registro Federal de Contribuyentes"
+        },
+        "abbreviations": {
+            "en": "FTR",
+            "es": "RFC"
+        },
+        "input_pattern": "[0-9A-Z]{12}",
+        "input_example": "ABC123456A12",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": null
+}

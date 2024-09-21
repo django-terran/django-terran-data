@@ -1,0 +1,69 @@
+{
+    "__COUNTRY_NAME__": "China",
+    "__COUNTRY_A2__": "CN",
+    "__COUNTRY_A3__": "CHN",
+    "__COUNTRY_N3__": "156",
+    "__LANGUAGE_A2__": "zh",
+    "__LANGUAGES_A2__": [
+        "zh",
+        "ug",
+        "za",
+        "mn-mong",
+        "bo",
+        "ko"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "settlement",
+            "postcode",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_level1area %}{{ level1area_name }}\n{% endif %}{% if has_postcode or has_settlement %}{% if has_postcode %}{{ postcode_text }}{% if has_settlement %} {% endif %}{% endif %}{% if has_settlement %}{{ settlement_text }}{% endif %}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Province"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{6}",
+        "postcode_input_example": "123456",
+        "street_names": {
+            "en": "House number, road, district"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "86"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "Unified Social Credit Identifier",
+            "zh": "法人和其他組織統一社會信用代碼"
+        },
+        "abbreviations": {
+            "en": "USCI",
+            "zh": "統一社會信用代碼"
+        },
+        "input_pattern": "[0-9A-Z]{18}",
+        "input_example": "A1B2C3D4E5F6G7H8I9",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": null
+}

@@ -1,0 +1,282 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+        "__COUNTRY_NAME__": {
+            "type": "string"
+        },
+        "__COUNTRY_A2__": {
+            "type": "string"
+        },
+        "__COUNTRY_A3__": {
+            "type": "string"
+        },
+        "__COUNTRY_N3__": {
+            "type": "string"
+        },
+        "__LANGUAGE_A2__": {
+            "type": "string"
+        },
+        "__LANGUAGES_A2__": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "address": {
+            "type": "object",
+            "patternProperties": {
+                "\\A__COMMENT_[0-9]+__\\Z": {
+                    "type": "string"
+                }
+            },
+            "properties": {
+                "input_layout": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "output_format": {
+                    "type": "string"
+                },
+                "level1area_names": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "patternProperties": {
+                        "\\A[a-z]+\\Z": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "level2area_names": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "patternProperties": {
+                        "\\A[a-z]+\\Z": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "settlement_names": {
+                    "type": "object",
+                    "patternProperties": {
+                        "\\A[a-z]+\\Z": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "postcode_names": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "patternProperties": {
+                        "\\A[a-z]+\\Z": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "postcode_input_pattern": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "postcode_input_example": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "street_names": {
+                    "type": "object",
+                    "patternProperties": {
+                        "\\A[a-z]+\\Z": {
+                            "type": [
+                                "string",
+                                "array"
+                            ],
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "phone": {
+            "type": "object",
+            "patternProperties": {
+                "\\A__COMMENT_[0-9]+__\\Z": {
+                    "type": "string"
+                }
+            },
+            "properties": {
+                "names": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "patternProperties": {
+                        "\\A[a-z]+\\Z": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "prefixes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "pattern": "\\A[0-9]+\\Z"
+                    }
+                },
+                "input_pattern": {
+                    "type": "string"
+                },
+                "input_example": {
+                    "type": "string"
+                },
+                "output_format": {
+                    "type": "object",
+                    "patternProperties": {
+                        "\\A.*\\Z": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "organization_id": {
+            "type": ["object", "null"],
+            "patternProperties": {
+                "\\A__COMMENT_[0-9]+__\\Z": {
+                    "type": "string"
+                }
+            },
+            "properties": {
+                "names": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "patternProperties": {
+                        "\\A[a-z]+\\Z": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "abbreviations": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "patternProperties": {
+                        "\\A[a-z]+\\Z": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "input_pattern": {
+                    "type": "string"
+                },
+                "input_example": {
+                    "type": "string"
+                },
+                "output_format": {
+                    "type": "object",
+                    "patternProperties": {
+                        "\\A.*\\Z": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "person_id": {
+            "type": ["object", "null"],
+            "patternProperties": {
+                "\\A__COMMENT_[0-9]+__\\Z": {
+                    "type": "string"
+                }
+            },
+            "properties": {
+                "names": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "patternProperties": {
+                        "\\A[a-z]+\\Z": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "abbreviations": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "patternProperties": {
+                        "\\A[a-z]+\\Z": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "input_pattern": {
+                    "type": "string"
+                },
+                "input_example": {
+                    "type": "string"
+                },
+                "output_format": {
+                    "type": "object",
+                    "patternProperties": {
+                        "\\A.*\\Z": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "iban": {
+            "type": ["object", "null"],
+            "patternProperties": {
+                "\\A__COMMENT_[0-9]+__\\Z": {
+                    "type": "string"
+                }
+            },
+            "properties": {
+                "names": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "patternProperties": {
+                        "\\A[a-z]+\\Z": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "input_pattern": {
+                    "type": "string"
+                },
+                "input_example": {
+                    "type": "string"
+                },
+                "output_format": {
+                    "type": "object",
+                    "patternProperties": {
+                        "\\A.*\\Z": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

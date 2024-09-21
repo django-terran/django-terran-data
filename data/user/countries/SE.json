@@ -1,0 +1,74 @@
+{
+    "__COUNTRY_NAME__": "Sweden",
+    "__COUNTRY_A2__": "SE",
+    "__COUNTRY_A3__": "SWE",
+    "__COUNTRY_N3__": "752",
+    "__LANGUAGE_A2__": "sv",
+    "__LANGUAGES_A2__": [
+        "sv",
+        "fi"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "postcode",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_postcode or has_settlement %}{% if has_postcode %}{{ postcode_text }}{% if has_settlement %} {% endif %}{% endif %}{% if has_settlement %}{{ settlement_text }}{% endif %}\n{% endif %}{% if has_level1area %}{{ level1area_name }}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "County"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{3} [0-9]{2}",
+        "postcode_input_example": "123 45",
+        "street_names": {
+            "en": "Road, house number"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "46"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "VAT identification number",
+            "sv": "Momsregistreringsnummer"
+        },
+        "abbreviations": {
+            "en": "VATIN",
+            "sv": "Momsnr. "
+        },
+        "input_pattern": "SE[0-9]{12}",
+        "input_example": "SE123456789012",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "SE[0-9]{22}",
+        "input_example": "SE1234567890123456789012",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

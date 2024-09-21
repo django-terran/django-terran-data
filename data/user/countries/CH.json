@@ -1,0 +1,77 @@
+{
+    "__COUNTRY_NAME__": "Switzerland",
+    "__COUNTRY_A2__": "CH",
+    "__COUNTRY_A3__": "CHE",
+    "__COUNTRY_N3__": "756",
+    "__LANGUAGE_A2__": "de",
+    "__LANGUAGES_A2__": [
+        "de",
+        "gsw",
+        "fr",
+        "it",
+        "rm"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "postcode",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_postcode or has_settlement %}{% if has_postcode %}{{ postcode_text }}{% if has_settlement %} {% endif %}{% endif %}{% if has_settlement %}{{ settlement_text }}{% endif %}\n{% endif %}{% if has_level1area %}{{ level1area_name }}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Canton"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{4}",
+        "postcode_input_example": "1234",
+        "street_names": {
+            "en": "Road, house number"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "41"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "de": "Mehrwertsteuernummer",
+            "en": "VAT number"
+        },
+        "abbreviations": {
+            "de": "MWST",
+            "en": "VAT No."
+        },
+        "input_pattern": "[0-9]{6}|CHE[0-9]{9}(IVA|MWST|TVA)",
+        "input_example": "CHE123456789TVA",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "CH[0-9]{7}[0-9A-Za-z]{12}",
+        "input_example": "CH1234567a1b2c3d4e5f6",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

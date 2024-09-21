@@ -1,0 +1,59 @@
+{
+    "__COUNTRY_NAME__": "Egypt",
+    "__COUNTRY_A2__": "EG",
+    "__COUNTRY_A3__": "EGY",
+    "__COUNTRY_N3__": "818",
+    "__LANGUAGE_A2__": "ar",
+    "__LANGUAGES_A2__": [
+        "ar"
+    ],
+    "address": {
+        "input_layout": [
+            "postcode",
+            "level1area",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_settlement %}{{ settlement_text }}\n{% endif %}{% if has_level1area %}{{ level1area_name }}\n{% endif %}{% if has_postcode %}{{ postcode_text }}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Governorate"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{7}",
+        "postcode_input_example": "1234567",
+        "street_names": {
+            "en": "House number, road, district"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "20"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": null,
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "EG[0-9]{27}",
+        "input_example": "EG123456789012345678901234567",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

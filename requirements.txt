@@ -1,0 +1,4 @@
+black
+Django
+requests
+jsonschema

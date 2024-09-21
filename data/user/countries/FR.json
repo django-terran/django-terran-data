@@ -1,0 +1,77 @@
+{
+    "__COUNTRY_NAME__": "France",
+    "__COUNTRY_A2__": "FR",
+    "__COUNTRY_A3__": "FRA",
+    "__COUNTRY_N3__": "250",
+    "__LANGUAGE_A2__": "fr",
+    "__LANGUAGES_A2__": [
+        "fr"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "level2area",
+            "settlement",
+            "postcode",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_postcode or has_settlement %}{% if has_postcode %}{{ postcode_text }}{% if has_settlement %} {% endif %}{% endif %}{% if has_settlement %}{{ settlement_text }}{% endif %}\n{% endif %}{% if has_level1area or has_level2area %}{% if has_level1area %}{{ level1area_name }}{% if has_level2area %}, {% endif %}{% endif %}{% if has_level2area %}{{ level2area_name }}{% endif %}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Region"
+        },
+        "level2area_names": {
+            "en": "Department"
+        },
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{5}",
+        "postcode_input_example": "12345",
+        "street_names": {
+            "en": "House number, road"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "33"
+        ],
+        "input_pattern": "33[0-9]{9}",
+        "input_example": "33123456789",
+        "output_format": {
+            "\\A33([0-9])([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})\\Z": "33 \\1 \\2 \\3 \\4 \\5",
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "VAT identification number",
+            "fr": "Numéro de TVA intracommunautaire "
+        },
+        "abbreviations": {
+            "en": "VATIN",
+            "fr": "n⁰ TVA"
+        },
+        "input_pattern": "FR[0-9A-Z]{2}[0-9]{9}",
+        "input_example": "FRa2123456789",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "FR[0-9]{12}[0-9A-Za-z]{11}[0-9]{2}",
+        "input_example": "FR123456789012a1b2c3d4e5f12",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

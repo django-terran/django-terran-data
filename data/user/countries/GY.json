@@ -1,0 +1,47 @@
+{
+    "__COUNTRY_NAME__": "Guyana",
+    "__COUNTRY_A2__": "GY",
+    "__COUNTRY_A3__": "GUY",
+    "__COUNTRY_N3__": "328",
+    "__LANGUAGE_A2__": "en",
+    "__LANGUAGES_A2__": [
+        "en"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_settlement %}{{ settlement_text }}\n{% endif %}{% if has_level1area %}{{ level1area_name }}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Region"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": null,
+        "postcode_input_pattern": null,
+        "postcode_input_example": null,
+        "street_names": {
+            "en": "House number, road"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "592"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": null,
+    "person_id": null,
+    "iban": null
+}

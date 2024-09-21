@@ -1,0 +1,55 @@
+{
+    "__COUNTRY_NAME__": "Vatican City",
+    "__COUNTRY_A2__": "VA",
+    "__COUNTRY_A3__": "VAT",
+    "__COUNTRY_N3__": "336",
+    "__LANGUAGE_A2__": "it",
+    "__LANGUAGES_A2__": [
+        "it"
+    ],
+    "address": {
+        "input_layout": [
+            "postcode",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_postcode %}{{ postcode_text }}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": null,
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "00120",
+        "postcode_input_example": "00120",
+        "street_names": {
+            "en": "Road, house number"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "379"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": null,
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "VA[0-9]{20}",
+        "input_example": "VA12345678901234567890",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

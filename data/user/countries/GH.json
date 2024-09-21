@@ -1,0 +1,53 @@
+{
+    "__COUNTRY_NAME__": "Ghana",
+    "__COUNTRY_A2__": "GH",
+    "__COUNTRY_A3__": "GHA",
+    "__COUNTRY_N3__": "288",
+    "__LANGUAGE_A2__": "ak",
+    "__LANGUAGES_A2__": [
+        "ak",
+        "en",
+        "ee",
+        "gaa"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "postcode",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_settlement %}{{ settlement_text }}\n{% endif %}{% if has_postcode or has_level1area %}{% if has_postcode %}{{ postcode_text }}{% if has_level1area %} {% endif %}{% endif %}{% if has_level1area %}{{ level1area_name }}{% endif %}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Region"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[A-Z][0-9A-Z][0-9]{3,5}",
+        "postcode_input_example": "AB1234",
+        "street_names": {
+            "en": "House number, road"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "233"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": null,
+    "person_id": null,
+    "iban": null
+}

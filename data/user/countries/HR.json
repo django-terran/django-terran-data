@@ -1,0 +1,75 @@
+{
+    "__COUNTRY_NAME__": "Croatia",
+    "__COUNTRY_A2__": "HR",
+    "__COUNTRY_A3__": "HRV",
+    "__COUNTRY_N3__": "191",
+    "__LANGUAGE_A2__": "hr",
+    "__LANGUAGES_A2__": [
+        "hr",
+        "it",
+        "vec"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "postcode",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_postcode or has_settlement %}{% if has_postcode %}{{ postcode_text }}{% if has_settlement %} {% endif %}{% endif %}{% if has_settlement %}{{ settlement_text }}{% endif %}\n{% endif %}{% if has_level1area %}{{ level1area_name }}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "County"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{5}",
+        "postcode_input_example": "12345",
+        "street_names": {
+            "en": "Road, house number"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "385"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "VAT identification number",
+            "hr": "PDV Id. Broj OIB"
+        },
+        "abbreviations": {
+            "en": "VATIN",
+            "hr": "PDV-ID"
+        },
+        "input_pattern": "HR[0-9]{11}",
+        "input_example": "HR12345678901",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "HR[0-9]{19}",
+        "input_example": "HR1234567890123456789",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

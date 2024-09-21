@@ -1,0 +1,75 @@
+{
+    "__COUNTRY_NAME__": "Ireland",
+    "__COUNTRY_A2__": "IE",
+    "__COUNTRY_A3__": "IRL",
+    "__COUNTRY_N3__": "372",
+    "__LANGUAGE_A2__": "en",
+    "__LANGUAGES_A2__": [
+        "en",
+        "ga"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "level2area",
+            "settlement",
+            "postcode",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_settlement or has_postcode %}{% if has_settlement %}{{ settlement_text }}{% if has_postcode %} {% endif %}{% endif %}{% if has_postcode %}{{ postcode_text }}{% endif %}\n{% endif %}{% if has_level1area or has_level2area %}{% if has_level1area %}{{ level1area_name }}{% if has_level2area %}, {% endif %}{% endif %}{% if has_level2area %}{{ level2area_name }}{% endif %}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "County"
+        },
+        "level2area_names": {
+            "en": "District"
+        },
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[A-Z][0-9]{2} [0-9A-Z]{4}",
+        "postcode_input_example": "A12 B1C2",
+        "street_names": {
+            "en": "House number, road, district"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "353"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "Value added tax identification no."
+        },
+        "abbreviations": {
+            "en": "VAT/CBL"
+        },
+        "input_pattern": "IE[0-9]{7}[A-Z]{1,2}",
+        "input_example": "IE1234567A",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "IE[0-9]{2}[A-Z]{4}[0-9]{14}",
+        "input_example": "IE12ABCD12345678901234",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

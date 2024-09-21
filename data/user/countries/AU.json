@@ -1,0 +1,62 @@
+{
+    "__COUNTRY_NAME__": "Australia",
+    "__COUNTRY_A2__": "AU",
+    "__COUNTRY_A3__": "AUS",
+    "__COUNTRY_N3__": "036",
+    "__LANGUAGE_A2__": "en",
+    "__LANGUAGES_A2__": [
+        "en"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "postcode",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_settlement or has_level1area or has_postcode %}{% if has_settlement %}{{ settlement_text }}{% if has_level1area or has_postcode %} {% endif %}{% endif %}{% if has_level1area %}{{ level1area_name }}{% if has_postcode %} {% endif %}{% endif %}{% if has_postcode %}{{ postcode_text }}{% endif %}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "State"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{4}",
+        "postcode_input_example": "1234",
+        "street_names": {
+            "en": "House number, road"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "61"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "Australian Business Number"
+        },
+        "abbreviations": {
+            "en": "ABN"
+        },
+        "input_pattern": "[0-9]{11}",
+        "input_example": "12345678901",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": null
+}

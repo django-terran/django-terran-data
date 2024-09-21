@@ -1,0 +1,78 @@
+{
+    "__COUNTRY_NAME__": "Dominican Republic",
+    "__COUNTRY_A2__": "DO",
+    "__COUNTRY_A3__": "DOM",
+    "__COUNTRY_N3__": "214",
+    "__LANGUAGE_A2__": "es",
+    "__LANGUAGES_A2__": [
+        "es"
+    ],
+    "address": {
+        "input_layout": [
+            "postcode",
+            "level1area",
+            "level2area",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_settlement or has_level1area or has_level2area %}{% if has_settlement %}{{ settlement_text }}{% if has_level1area or has_level2area %}, {% endif %}{% endif %}{% if has_level1area %}{{ level1area_name }}{% if has_level2area %} {% endif %}{% endif %}{% if has_level2area %}{{ level2area_name }}{% endif %}\n{% endif %}{% if has_postcode %}{{ postcode_text }}{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Province"
+        },
+        "level2area_names": {
+            "en": "Municipality"
+        },
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{5}",
+        "postcode_input_example": "12345",
+        "street_names": {
+            "en": "Road, house number, district"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "1809",
+            "1829",
+            "1849"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "National Taxpayer Registry",
+            "es": "Registro Nacional del Contribuyente"
+        },
+        "abbreviations": {
+            "en": "NTR",
+            "es": "RNC"
+        },
+        "input_pattern": "[0-9]{9}",
+        "input_example": "123456789",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "DO[0-9]{2}[0-9A-Za-z]{4}[0-9]{20}",
+        "input_example": "DO12a1b212345678901234567890",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

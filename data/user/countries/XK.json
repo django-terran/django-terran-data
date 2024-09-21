@@ -1,0 +1,58 @@
+{
+    "__COUNTRY_NAME__": "Kosovo",
+    "__COUNTRY_A2__": "XK",
+    "__COUNTRY_A3__": "XKK",
+    "__COUNTRY_N3__": "983",
+    "__LANGUAGE_A2__": "sq",
+    "__LANGUAGES_A2__": [
+        "sq",
+        "sr",
+        "sr-latn"
+    ],
+    "address": {
+        "input_layout": [
+            "settlement",
+            "postcode",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_postcode or has_settlement %}{% if has_postcode %}{{ postcode_text }}{% if has_settlement %} {% endif %}{% endif %}{% if has_settlement %}{{ settlement_text }}{% endif %}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": null,
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{5}",
+        "postcode_input_example": "12345",
+        "street_names": {
+            "en": "Road, house number"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "383"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": null,
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "XK[0-9]{18}",
+        "input_example": "XK123456789012345678",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

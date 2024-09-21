@@ -1,0 +1,65 @@
+{
+    "__COUNTRY_NAME__": "Ecuador",
+    "__COUNTRY_A2__": "EC",
+    "__COUNTRY_A3__": "ECU",
+    "__COUNTRY_N3__": "218",
+    "__LANGUAGE_A2__": "es",
+    "__LANGUAGES_A2__": [
+        "es",
+        "qu"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "postcode",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_postcode %}{{ postcode_text }}\n{% endif %}{% if has_settlement %}{{ settlement_text }}\n{% endif %}{% if has_level1area %}{{ level1area_name }}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Province"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{6}",
+        "postcode_input_example": "123456",
+        "street_names": {
+            "en": "Road, house number"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "593"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "Unique Taxpayer Registration Number",
+            "es": "Número de Registro Unico de Contribuyentes"
+        },
+        "abbreviations": {
+            "en": "UTR",
+            "es": "RUC"
+        },
+        "input_pattern": "[0-9]{13}",
+        "input_example": "1234567890123",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": null
+}

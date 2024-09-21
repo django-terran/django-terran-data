@@ -1,0 +1,73 @@
+{
+    "__COUNTRY_NAME__": "Romania",
+    "__COUNTRY_A2__": "RO",
+    "__COUNTRY_A3__": "ROU",
+    "__COUNTRY_N3__": "642",
+    "__LANGUAGE_A2__": "ro",
+    "__LANGUAGES_A2__": [
+        "ro"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "postcode",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_postcode or has_settlement %}{% if has_postcode %}{{ postcode_text }}{% if has_settlement %} {% endif %}{% endif %}{% if has_settlement %}{{ settlement_text }}{% endif %}\n{% endif %}{% if has_level1area %}{{ level1area_name }}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "County"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{6}",
+        "postcode_input_example": "123456",
+        "street_names": {
+            "en": "Road, house number"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "40"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "VAT identification number",
+            "ro": "Codul de identificare fiscală"
+        },
+        "abbreviations": {
+            "en": "VATIN",
+            "ro": "CIF"
+        },
+        "input_pattern": "RO[0-9]{2,10}",
+        "input_example": "RO1234567890",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "RO[0-9]{2}[A-Z]{4}[0-9A-Za-z]{16}",
+        "input_example": "RO12ABCDa1b2c3d4e5f6g7h8",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

@@ -1,0 +1,121 @@
+{
+    "__COUNTRY_NAME__": "Georgia",
+    "__COUNTRY_A2__": "GE",
+    "__COUNTRY_A3__": "GEO",
+    "__COUNTRY_N3__": "268",
+    "__LANGUAGE_A2__": "ka",
+    "__LANGUAGES_A2__": [
+        "ka",
+        "ab",
+        "os"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "postcode",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_postcode or has_settlement %}{% if has_postcode %}{{ postcode_text }}{% if has_settlement %} {% endif %}{% endif %}{% if has_settlement %}{{ settlement_text }}{% endif %}\n{% endif %}{% if has_level1area %}{{ level1area_name }}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Mkhare",
+            "ka": "მხარე",
+            "ru": "Регион"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "City or Village",
+            "ka": "ქალაქი ან სოფელი",
+            "ru": "Город или деревня"
+        },
+        "postcode_names": {
+            "en": "Post Index",
+            "ka": "საფოსტო ინდექსი",
+            "ru": "Почтовый индекс"
+        },
+        "postcode_input_pattern": "[0-9]{4}",
+        "postcode_input_example": "1234",
+        "street_names": {
+            "en": "Road, house number",
+            "ka": "ქუჩა, შენობის ნომერი",
+            "ru": "Улица, номер дома"
+        }
+    },
+    "phone": {
+        "__COMMENT_01__": "Source: https://en.wikipedia.org/wiki/Telephone_numbers_in_Georgia_(country)",
+        "__COMMENT_02__": "3X(X) Area codes of in eastern Georgia.",
+        "__COMMENT_03__": "4X(X) Area codes in western Georgia.",
+        "__COMMENT_04__": "5XX   Prefixes of mobile operators.",
+        "__COMMENT_05__": "7XX   Non-geographical services.",
+        "names": {
+            "en": "Phone Number",
+            "ka": "ტელეფონი ნომერი",
+            "ru": "Номер телефона"
+        },
+        "prefixes": [
+            "995"
+        ],
+        "input_pattern": "995[3457][0-9]{8}",
+        "input_example": "995555123456",
+        "output_format": {
+            "\\A99532([0-9]{3})([0-9]{2})([0-9]{2})\\Z": "995 \\1 \\2 \\3 \\4",
+            "\\A995([34][0-9][0-9])([0-9]{2})([0-9]{2})([0-9]{2})\\Z": "995 \\1 \\2 \\3 \\4",
+            "\\A995([57][0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})\\Z": "995 \\1 \\2 \\3 \\4",
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "__COMMENT_01__": "Source: real life experience of a busness owner.",
+        "names": {
+            "en": "Identificaion Code",
+            "ka": "საიდენტიფიცავიო კოდი",
+            "ru": "Идентификационный код"
+        },
+        "abbreviations": {
+            "en": "I.C.",
+            "ka": "ს.კ.",
+            "ru": "И.К."
+        },
+        "input_pattern": "[0-9]{9}",
+        "input_example": "123456789",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": {
+        "__COMMENT_01__": "Source: real life experience of a citizen.",
+        "__COMMENT_02__": "Unlike USA SSN Personal Number is not confidential.",
+        "names": {
+            "en": "Personal Number",
+            "ka": "პირადი ნომერი",
+            "ru": "Личный номер"
+        },
+        "abbreviations": {
+            "en": "P/N",
+            "ka": "პ/ნ",
+            "ru": "Л/Н"
+        },
+        "input_pattern": "[0-9]{11}",
+        "input_example": "12345678901",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "iban": {
+        "__COMMENT_01__": "Source: https://en.wikipedia.org/wiki/International_Bank_Account_Number",
+        "__COMMENT_02__": "GE 00 BB 0000000000000000",
+        "__COMMENT_03__": "   00 - Check digits.",
+        "__COMMENT_04__": "      BB - Bank code.",
+        "__COMMENT_05__": "         0000000000000000 - Account number.",
+        "names": {
+            "en": "IBAN",
+            "ka": "IBAN",
+            "ru": "IBAN"
+        },
+        "input_pattern": "GE[0-9]{2}[A-Z]{2}[0-9]{16}",
+        "input_example": "GE12AB1234567890123456",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

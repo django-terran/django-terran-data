@@ -1,0 +1,74 @@
+{
+    "__COUNTRY_NAME__": "Brazil",
+    "__COUNTRY_A2__": "BR",
+    "__COUNTRY_A3__": "BRA",
+    "__COUNTRY_N3__": "076",
+    "__LANGUAGE_A2__": "pt",
+    "__LANGUAGES_A2__": [
+        "pt",
+        "vec"
+    ],
+    "address": {
+        "input_layout": [
+            "postcode",
+            "level1area",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_settlement or has_level1area %}{% if has_settlement %}{{ settlement_text }}{% if has_level1area %} - {% endif %}{% endif %}{% if has_level1area %}{{ level1area_name }}{% endif %}\n{% endif %}{% if has_postcode %}{{ postcode_text }}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "State"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{5}(-[0-9]{3})?",
+        "postcode_input_example": "12345",
+        "street_names": {
+            "en": "Road, house number, district"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "55"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "National Registry of Legal Entities",
+            "pt": "Cadastro Nacional de Pessoa Jurídica "
+        },
+        "abbreviations": {
+            "en": "NRLE",
+            "pt": "CNPJ"
+        },
+        "input_pattern": "[0-9]{14}",
+        "input_example": "12345678901234",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "BR[0-9]{25}[A-Z]{1}[0-9A-Za-z]{1}",
+        "input_example": "BR1234567890123456789012345Aa",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

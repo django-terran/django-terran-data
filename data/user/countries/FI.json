@@ -1,0 +1,75 @@
+{
+    "__COUNTRY_NAME__": "Finland",
+    "__COUNTRY_A2__": "FI",
+    "__COUNTRY_A3__": "FIN",
+    "__COUNTRY_N3__": "246",
+    "__LANGUAGE_A2__": "fi",
+    "__LANGUAGES_A2__": [
+        "fi",
+        "sv",
+        "sms"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "postcode",
+            "settlement",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_postcode or has_settlement %}{% if has_postcode %}{{ postcode_text }}{% if has_settlement %} {% endif %}{% endif %}{% if has_settlement %}{{ settlement_text }}{% endif %}\n{% endif %}{% if has_level1area %}{{ level1area_name }}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Region"
+        },
+        "level2area_names": null,
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{5}",
+        "postcode_input_example": "12345",
+        "street_names": {
+            "en": "Road, house number"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "358"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "en": "VAT identification number",
+            "fi": "Arvonlisäveronumero"
+        },
+        "abbreviations": {
+            "en": "VATIN",
+            "fi": "ALV nro"
+        },
+        "input_pattern": "FI[0-9]{7}",
+        "input_example": "FI1234567",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "FI[0-9]{16}",
+        "input_example": "FI1234567890123456",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}

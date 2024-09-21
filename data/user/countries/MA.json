@@ -1,0 +1,55 @@
+{
+    "__COUNTRY_NAME__": "Morocco",
+    "__COUNTRY_A2__": "MA",
+    "__COUNTRY_A3__": "MAR",
+    "__COUNTRY_N3__": "504",
+    "__LANGUAGE_A2__": "ar",
+    "__LANGUAGES_A2__": [
+        "ar",
+        "fr",
+        "tzm"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "level2area",
+            "settlement",
+            "postcode",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_postcode or has_settlement %}{% if has_postcode %}{{ postcode_text }}{% if has_settlement %} {% endif %}{% endif %}{% if has_settlement %}{{ settlement_text }}{% endif %}\n{% endif %}{% if has_level1area or has_level2area %}{% if has_level1area %}{{ level1area_name }}{% if has_level2area %}, {% endif %}{% endif %}{% if has_level2area %}{{ level2area_name }}{% endif %}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Region"
+        },
+        "level2area_names": {
+            "en": "Municipality"
+        },
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{5}",
+        "postcode_input_example": "12345",
+        "street_names": {
+            "en": "House number, road"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "212"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": null,
+    "person_id": null,
+    "iban": null
+}

@@ -1,0 +1,76 @@
+{
+    "__COUNTRY_NAME__": "Czechia",
+    "__COUNTRY_A2__": "CZ",
+    "__COUNTRY_A3__": "CZE",
+    "__COUNTRY_N3__": "203",
+    "__LANGUAGE_A2__": "cs",
+    "__LANGUAGES_A2__": [
+        "cs"
+    ],
+    "address": {
+        "input_layout": [
+            "level1area",
+            "level2area",
+            "settlement",
+            "postcode",
+            "street"
+        ],
+        "output_format": "{% if has_recipient %}{{ recipient_text }}\n{% endif %}{% if has_street %}{{ street_text }}\n{% endif %}{% if has_postcode or has_settlement %}{% if has_postcode %}{{ postcode_text }}{% if has_settlement %} {% endif %}{% endif %}{% if has_settlement %}{{ settlement_text }}{% endif %}\n{% endif %}{% if has_level1area or has_level2area %}{% if has_level1area %}{{ level1area_name }}{% if has_level2area %}, {% endif %}{% endif %}{% if has_level2area %}{{ level2area_name }}{% endif %}\n{% endif %}{% if has_country %}{{ country_name }}\n{% endif %}",
+        "level1area_names": {
+            "en": "Region"
+        },
+        "level2area_names": {
+            "en": "Municipality"
+        },
+        "settlement_names": {
+            "en": "Settlement"
+        },
+        "postcode_names": {
+            "en": "Post Code"
+        },
+        "postcode_input_pattern": "[0-9]{3} [0-9]{2}",
+        "postcode_input_example": "123 45",
+        "street_names": {
+            "en": "Road, house number"
+        }
+    },
+    "phone": {
+        "names": {
+            "en": "Phone Number"
+        },
+        "prefixes": [
+            "420"
+        ],
+        "input_pattern": "[0-9]+",
+        "input_example": "####",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "organization_id": {
+        "names": {
+            "cs": "Daňové identifikační číslo",
+            "en": "VAT identification number"
+        },
+        "abbreviations": {
+            "cs": "DIČ",
+            "en": "VATIN"
+        },
+        "input_pattern": "CZ[0-9]{8,10}",
+        "input_example": "CZ12345678",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    },
+    "person_id": null,
+    "iban": {
+        "names": {
+            "en": "IBAN"
+        },
+        "input_pattern": "CZ[0-9]{22}",
+        "input_example": "CZ1234567890123456789012",
+        "output_format": {
+            "\\A.*\\Z": "\\1"
+        }
+    }
+}
