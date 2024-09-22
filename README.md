@@ -146,7 +146,7 @@ See https://github.com/django-terran/django-terran
 
 ## How can I help?
 
-## Fix user data, that's where I really need some help
+### Fix user data, that's where I really need some help
 
 1. Go to data/user/countries/{YOUR-COUNTRY-CODE}.json
 1. Look at data/user/countries/GE.json and data/user/countries/US.json for inspuration.
