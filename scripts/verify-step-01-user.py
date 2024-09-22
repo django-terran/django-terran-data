@@ -40,8 +40,12 @@ with scandir(join(USER_BASE_PATH, "countries")) as dir_iterator:
 
 for address_output_format, paths in UNIQUE_ADDRESS_OUTPUT_FORMATS.items():
     country_options = [False, True] if ("{{ country_name }}" in address_output_format) else [False]
-    level1area_options = [False, True] if (("{{ level1area_name }}" in address_output_format) or ("{{ level1area_code }}" in address_output_format)) else [False]
-    level2area_options = [False, True] if (("{{ level2area_name }}" in address_output_format) or ("{{ level2area_code }}" in address_output_format)) else [False]
+    level1area_options = (
+        [False, True] if (("{{ level1area_name }}" in address_output_format) or ("{{ level1area_code }}" in address_output_format)) else [False]
+    )
+    level2area_options = (
+        [False, True] if (("{{ level2area_name }}" in address_output_format) or ("{{ level2area_code }}" in address_output_format)) else [False]
+    )
     postcode_options = [False, True] if ("{{ postcode_text }}" in address_output_format) else [False]
     settlement_options = [False, True] if ("{{ settlement_text }}" in address_output_format) else [False]
     street_options = [False, True] if ("{{ street_text }}" in address_output_format) else [False]
@@ -75,26 +79,20 @@ for address_output_format, paths in UNIQUE_ADDRESS_OUTPUT_FORMATS.items():
                                 )
 
                                 if (
-                                    (has_country and ("$country_name$" not in result)) or
-                                    ((not has_country) and ("$country_name$" in result)) or
-
-                                    (has_level1area and ("$level1area_name$" not in result) and ("$level1area_code$" not in result)) or
-                                    ((not has_level1area) and (("$level1area_name$" in result) or ("$level1area_code$" in result))) or
-
-                                    (has_level2area and ("$level2area_name$" not in result) and ("$level2area_code$" not in result)) or
-                                    ((not has_level2area) and (("$level2area_name$" in result) or ("$level2area_code$" in result))) or
-
-                                    (has_postcode and ("$postcode_text$" not in result)) or
-                                    ((not has_postcode) and ("$postcode_text$" in result)) or
-
-                                    (has_settlement and ("$settlement_text$" not in result)) or
-                                    ((not has_settlement) and ("$settlement_text$" in result)) or
-
-                                    (has_street and ("$street_text$" not in result)) or
-                                    ((not has_street) and ("$street_text$" in result)) or
-
-                                    (has_recipient and ("$recipient_text$" not in result)) or
-                                    ((not has_recipient) and ("$recipient_text$" in result))
+                                    (has_country and ("$country_name$" not in result))
+                                    or ((not has_country) and ("$country_name$" in result))
+                                    or (has_level1area and ("$level1area_name$" not in result) and ("$level1area_code$" not in result))
+                                    or ((not has_level1area) and (("$level1area_name$" in result) or ("$level1area_code$" in result)))
+                                    or (has_level2area and ("$level2area_name$" not in result) and ("$level2area_code$" not in result))
+                                    or ((not has_level2area) and (("$level2area_name$" in result) or ("$level2area_code$" in result)))
+                                    or (has_postcode and ("$postcode_text$" not in result))
+                                    or ((not has_postcode) and ("$postcode_text$" in result))
+                                    or (has_settlement and ("$settlement_text$" not in result))
+                                    or ((not has_settlement) and ("$settlement_text$" in result))
+                                    or (has_street and ("$street_text$" not in result))
+                                    or ((not has_street) and ("$street_text$" in result))
+                                    or (has_recipient and ("$recipient_text$" not in result))
+                                    or ((not has_recipient) and ("$recipient_text$" in result))
                                 ):
                                     print("INVALID FORMAT")
                                     print(address_output_format.replace("\n", "\\n"))
