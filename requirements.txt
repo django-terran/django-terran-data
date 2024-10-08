@@ -2,3 +2,4 @@ black
 Django
 requests
 jsonschema
+Jinja2
