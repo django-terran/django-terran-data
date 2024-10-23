@@ -8,6 +8,7 @@
 
 from argparse import ArgumentParser
 from collections import defaultdict
+from datetime import datetime
 from itertools import batched
 from json import dumps
 from json import loads
@@ -45,6 +46,10 @@ COUNTRY_USER_DATA = {}
 GLOBAL_COUNTERS = defaultdict(int)
 COUNTRY_COUNTERS = defaultdict(lambda: defaultdict(int))
 
+now = datetime.now()
+version = now.year * 10000 + now.month * 100 + now.day
+
+print(f"Version = {version}")
 print(f"Reading currency CLDR data")
 
 with scandir(join(CLDR_BASE_PATH, "currencies")) as dir_iterator:
@@ -125,6 +130,7 @@ for currency_code, cldr_data in sorted(CURRENCY_CLDR_DATA.items()):
             "fields": {
                 "iso_4217_n3": int(cldr_data["iso_4217_n3"]),
                 "iso_4217_a3": cldr_data["iso_4217_a3"],
+                "version": version,
                 "names": {k: v.strip(FOOTNOTE_DIGITS) for k, v in cldr_data["names"].items()},
                 "decimal_digits": cldr_data["decimal_digits"],
             },
@@ -156,6 +162,7 @@ def get_country_fixture(cldr_data: dict, user_data: dict):
             "iso_3166_n3": int(cldr_data["iso_3166_n3"]),
             "iso_3166_a2": cldr_data["iso_3166_a2"],
             "iso_3166_a3": cldr_data["iso_3166_a3"],
+            "version": version,
             "names": names,
             "currency": [cldr_data["currency"]],
             "languages": cldr_data["languages"],
@@ -197,6 +204,7 @@ def get_currency_fixture(country_id: int, cldr_data: dict):
         "fields": {
             "country": country_id,
             "currency": cldr_data["iso_4217_a3"],
+            "version": version,
             "since": cldr_data["since"],
             "until": cldr_data["until"],
         },
@@ -211,6 +219,7 @@ def get_level1area_fixture(country_id: int, cldr_data: dict, osm_data: dict):
         "fields": {
             "country": country_id,
             "iso_3166_a2": cldr_data["iso_3166_a2"],
+            "version": version,
             "names": names,
             "expando": osm_data.get("expando", {}) if osm_data else {},
         },
@@ -226,6 +235,7 @@ def get_level2area_fixture(country_id: int, level1area_id: str, cldr_data: dict,
             "country": country_id,
             "level1area": [level1area_id],
             "iso_3166_a2": cldr_data["iso_3166_a2"],
+            "version": version,
             "names": names,
             "expando": osm_data.get("expando", {}) if osm_data else {},
         },
@@ -255,6 +265,7 @@ def get_settlement_fixture(country_id: int, level1area_id: str, level2area_id: s
             "country": country_id,
             "level1area": [level1area_id] if level1area_id else None,
             "level2area": [level2area_id] if level2area_id else None,
+            "version": version,
             "names": names,
             "place_type": PLACE_TYPES.get(osm_data["place"]),
             "population": population,
