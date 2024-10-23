@@ -1,3 +1,4 @@
+Default license is The 3-Clause BSD License
 Files under "data/cldr" are licensed under UNICODE LICENSE V3, see LICENSE-cldr
 Files under "data/osm" are licensed under Open Data Commons Open Database License (ODbL) v1.0, see "https://opendatacommons.org/licenses/odbl/1-0/"
 Files under "data/user" and everything else are licensed under Creative Commons Attribution-ShareAlike 4.0 International, see "https://creativecommons.org/licenses/by-sa/4.0/"
